@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
 import "../Table/Table.css"
 import axios from "axios";
+import TableRow from './tableRow/TableRow';
 
 class Table extends Component { 
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = { 
-          
-    //     };
-    //   }
     
-      componentDidMount(){
-        axios.get('https://randomuser.me/api/?results=200&nat=us')
-              .then(res => {
-            const response  = res.data;
-            this.setState({ response });
+    
+      componentDidMount() {
+        axios.get(`https://randomuser.me/api/?results=200&nat=us`)
+          .then(res => {
+            const persons  = res.data.results;
+            this.setState(persons); 
           })
-        .catch(error =>{
-        console.log(error);
-        })
-        };
+      } 
 
   render() {
-    console.log(this.state)
+    const persons = this.state;
+    if ( persons !== null ) {
+      let personsKeys = Object.keys(persons);
+      personsKeys.map(function( index, person){
+        console.log(persons[index].location.timezone)       
+      })
+    }
+    
+
+    
     return (
+      
+      
         <div>
         <h1>Who are these people?</h1>
-        
-<table>
+        <table>
   <tr>
     <th>Image</th>
     <th>Name</th>
@@ -36,27 +38,13 @@ class Table extends Component {
     <th>Age</th>
     <th>Favorite College Football Team</th>
   </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  
+  <TableRow rowContent={this.state} />
 </table>
 </div>
+
     )
   }
 }
 
 
-
-export default Table
+export default Table;
