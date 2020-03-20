@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "../Table/Table.css"
 import TableRow from './tableRow/TableRow';
 
-import Header from "../Header/Header";
 
 class Table extends Component { 
     
@@ -15,7 +14,6 @@ render(){
    
     
     <div>
-      <Header />
       <h1>Who are these people?</h1>
       <table>
         
