@@ -14,12 +14,12 @@ export default class Header extends Component {
     return (
 <div className="header">
 <nav>
-    <div class="nav-wrapper">
+    <div className="nav-wrapper">
       <form>
-        <div class="input-field">
+        <div className="input-field">
           <input type="text" name="search" value={this.props.search} onChange={this.props.inputChange}  required />
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
+          <label className="label-icon" htmlFor="search"><i class="material-icons">search</i></label>
+          <i className="material-icons">close</i>
         </div>
       </form>
     </div>
